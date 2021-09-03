@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const Card = (article) => {
   // TASK 5
   // ---------------------
@@ -17,9 +19,39 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
+  //create elements
+  const cardDiv = document.createElement('div');
+  const headlineDiv = document.createElement('div');
+  const authorDiv = document.createElement('div');
+  const imgContainerDiv = document.createElement('div');
+  const authorImg = document.createElement('img');
+  const authorNameSpan = document.createElement('span');
+
+  //add classes
+  cardDiv.classList.add('card');
+  headlineDiv.classList.add('headline');
+  authorDiv.classList.add('author');
+  imgContainerDiv.classList.add('img-container');
+
+  //add content
+  headlineDiv.textContent = article.headline;
+  authorImg.src = article.authorPhoto;
+  authorNameSpan.textContent = `By ${article.authorName}`
+
+  //append
+  cardDiv.appendChild(headlineDiv);
+  cardDiv.appendChild(authorDiv)
+  authorDiv.appendChild(imgContainerDiv)
+  authorDiv.appendChild(authorImg)
+  authorDiv.appendChild(authorNameSpan)
+
+  console.log(cardDiv)
+  return cardDiv
 }
 
 const cardAppender = (selector) => {
+
+// const cardAppender = (selector) => {
   // TASK 6
   // ---------------------
   // Implement this function that takes a css selector as its only argument.
@@ -28,6 +60,25 @@ const cardAppender = (selector) => {
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
+  const selectorElement = document.querySelector(selector);
+  // console.log(selectorElement);
+
+  axios.get(`http://localhost:5000/api/articles`)
+  .then(response => {
+    // console.log(response)
+    const {articles} = response.data
+    // console.log(articles)
+    const topics = Object.keys(articles)
+    // console.log(topics)
+    let parsedArticles = [];
+    topics.forEach(topic =>{
+      const topicArticles = articles[topic]
+      parsedArticles = parsedArticles.concat(topicArticles)
+    })
+    console.log(parsedArticles)
+  })
+  .catch(err => console.log(err))
 }
+
 
 export { Card, cardAppender }
