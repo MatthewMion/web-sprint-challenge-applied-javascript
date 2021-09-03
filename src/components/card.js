@@ -42,7 +42,7 @@ const Card = (article) => {
   cardDiv.appendChild(headlineDiv);
   cardDiv.appendChild(authorDiv)
   authorDiv.appendChild(imgContainerDiv)
-  authorDiv.appendChild(authorImg)
+  imgContainerDiv.appendChild(authorImg)
   authorDiv.appendChild(authorNameSpan)
 
   console.log(cardDiv)
@@ -75,7 +75,12 @@ const cardAppender = (selector) => {
       const topicArticles = articles[topic]
       parsedArticles = parsedArticles.concat(topicArticles)
     })
-    console.log(parsedArticles)
+    // console.log(parsedArticles)
+    parsedArticles.forEach(article =>{
+      const articleCard = Card(article)
+      selectorElement.appendChild(articleCard)
+    })
+
   })
   .catch(err => console.log(err))
 }
