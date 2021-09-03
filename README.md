@@ -73,4 +73,4 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 4. Why would we convert a NodeList into an Array?
     -We can only perform the .forEach() method on an array so if we wanted to use other methods, we would need to convert it into an array.
 5. What is a component?
-    -A component is a reusable piece of programming to help automate our job.
+    -A component is an independent reusable piece of code to help automate our job.
