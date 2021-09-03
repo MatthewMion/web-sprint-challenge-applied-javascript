@@ -21,7 +21,6 @@ const Header = (title, date, temp) => {
   //add classes
   headerDiv.classList.add('header')
   dateSpan.classList.add('date')
-  titleH1.classList.add('title')
   tempSpan.classList.add('temp')
 
   //add content
@@ -44,9 +43,8 @@ const headerAppender = (selector) => {
   // It should append the header to the element in the DOM that matches the given selector.
   //
 const header = Header('Lambda Times', 'January 6, 2021', '26°');
-console.log(header)
+// console.log(header)
 const selectorElement = document.querySelector(selector);
-
 selectorElement.appendChild(header)
 }
 
