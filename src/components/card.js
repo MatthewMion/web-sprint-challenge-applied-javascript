@@ -45,6 +45,8 @@ const Card = (article) => {
   imgContainerDiv.appendChild(authorImg)
   authorDiv.appendChild(authorNameSpan)
 
+  cardDiv.addEventListener('click', () => console.log(article.headline))
+
   console.log(cardDiv)
   return cardDiv
 }
@@ -84,6 +86,5 @@ const cardAppender = (selector) => {
   })
   .catch(err => console.log(err))
 }
-
 
 export { Card, cardAppender }
